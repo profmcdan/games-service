@@ -3,6 +3,13 @@ from .models import Game
 
 
 class GameSerializer(serializers.Serializer):
+    class Meta:
+        model = Game
+        fields = ('id', 'name', 'release_date', 'esrb_rating',
+                  'played_once', 'played_times')
+
+
+class GameSerializer2(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     name = serializers.CharField(max_length=200)
     release_date = serializers.DateTimeField()
