@@ -1,3 +1,4 @@
+import dj_database_url
 """
 Django settings for games_service project.
 
@@ -74,13 +75,30 @@ WSGI_APPLICATION = 'games_service.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600, default="postgres://ywhswxst:HS68qGMX-2gBkQYGaor1tIZMxLIPEt3b@raja.db.elephantsql.com:5432/ywhswxst")
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     # 'sqlite': {
+#     #     'ENGINE': 'django.db.backends.sqlite3',
+#     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     # },
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         # Replace django_games with your desired database name
+#         'NAME': 'games_record',
+#         # Replace username with your desired user name
+#         'USER': 'ywhswxst',
+#         # Replace password with your desired password
+#         'PASSWORD': 'HS68qGMX-2gBkQYGaor1tIZMxLIPEt3b',
+#         # Replace 127.0.0.1 with the PostgreSQL host
+#         'HOST': 'raja.db.elephantsql.com',
+#         # Replace 5432 with the PostgreSQL configured port
+#         # in case you aren't using the default port
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
